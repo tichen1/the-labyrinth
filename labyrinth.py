@@ -1,4 +1,5 @@
 import random
+import keyboard
 
 # obstacle: True if you cannot move to/through there
 # state: 0 = none, 1 = theseus, 2 = minotaur
@@ -289,6 +290,7 @@ def start_game():
   
   Theseus = Fighter('THESEUS', 15, start1, {}, '', -1)
   Minotaur = Fighter('THE MINOTAUR', 20, start2, {}, '', -1)
+
   cheats = Cheats(False, False)
   
   print_line()
@@ -297,7 +299,7 @@ def start_game():
         'by sending them to by killed by THE MINOTAUR, a half-human half-bull monster.\n')
   print('You decide to take the challenge of slaying THE MINOTAUR in order to end Minos\' inhumane',
         'sacrifices once and for all. You sail from Athens to Crete and head towards THE LABYRINTH...\n')
-  option = input('Enter any key to start: ')
+  option = input('Press enter to start: ')
   
   # GAME STARTS HERE
   while True:
@@ -306,20 +308,18 @@ def start_game():
     if option == '1':
       break
     if option == '2':
-      print('1: SHOW HEALTH:', cheats.show_health, '        2: SHOW HEALTH:', cheats.show_distance, '       3: MAIN MENU')
+      print('1: SHOW HEALTH:', cheats.show_health, '        2: SHOW DISTANCE:', cheats.show_distance, '       3: MAIN MENU')
       option = input('Enter an option: ')
       while option != '3':
-        print('1: SHOW HEALTH:', cheats.show_health, '        2: SHOW HEALTH:', cheats.show_distance, '       3: MAIN MENU')
-        option = input('Enter an option: ')
+        
         if option == '1':
           cheats.show_health = not cheats.show_health
-          continue
         elif option == '2':
           cheats.show_distance = not cheats.show_distance
-          continue
         elif option != '3':
           print('Please enter a valid option.')
-          continue
+        print('1: SHOW HEALTH:', cheats.show_health, '        2: SHOW DISTANCE:', cheats.show_distance, '       3: MAIN MENU')
+        option = input('Enter an option: ')
       continue
     else:
       print('Please enter a valid option.')
